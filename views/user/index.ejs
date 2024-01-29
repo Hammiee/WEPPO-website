@@ -1,0 +1,19 @@
+<section class="products">
+    <h2 class="products__categories">Products</h2>
+
+    <ul class="products-ul">
+        <% data.forEach(item => { %>
+        <li>
+            <a href="/item/<%= item.id %>">
+                <span><%= item.name %></span>
+                <span><%= item.price %></span>
+                <div class="admin-item-controls">
+                    <form action="/addToBasket/<%= item.id %>" method="GET">
+                        <input type="submit" value="Add to basket" class="btn">
+                    </form>
+                </div>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+</section>

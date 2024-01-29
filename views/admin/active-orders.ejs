@@ -1,0 +1,23 @@
+<div class="admin-name">
+    <h2>Orders</h2>
+</div>
+
+<ul class="admin-items">
+    <% data.forEach(basket => { %>
+        <li>
+            <span>
+                <%= basket.name %>
+            </span>
+            <span class="category__name"><%= basket.ifOrdered %></span>
+            <% basket.contents.forEach(item => { %>
+                <ul>
+                    <span>
+                        <%= item.name %>
+                    </span>
+                    <span><%= item.quantity %></span>
+                </ul>
+            <% }) %>
+
+        </li>
+    <% }) %>
+</ul>

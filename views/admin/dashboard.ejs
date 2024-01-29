@@ -1,0 +1,24 @@
+<div class="admin-name">
+    <h2>Items</h2>
+    <a href="/add-item" class="button">+ Add New</a>
+</div>
+
+<ul class="admin-items">
+    <% data.forEach(item => { %>
+        <li>
+            <a href="/item/<%= item._id %>">
+                <%= item.name %> &nearr;
+            </a>
+            <div class="admin-item-controls">
+                <a href="/edit-item/<%= item._id %>" class="btn">Edit</a>
+
+                <form action="/delete-item/<%= item._id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete" class="btn">
+                </form>
+            </div>
+
+        </li>
+     
+
+    <% }) %>
+</ul>

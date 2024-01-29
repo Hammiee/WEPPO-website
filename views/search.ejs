@@ -1,0 +1,16 @@
+<div class="shop">
+    <h1 class="shop__heading">Serach Results</h1>
+</div>
+
+<section class="articles">
+    <ul class="products-ul">
+        <% data.forEach(item => { %>
+        <li>
+            <a href="/item/<%= item.id %>">
+                <span><%= item.name %></span>
+                <span class="category__name"><%= item.price %></span>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+</section>
