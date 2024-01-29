@@ -147,7 +147,8 @@ router.post('/signup', async (req, res)=>{
             });
             await newBasket.save();
             const user = await Client.create({ username, password: hashedPassword, basket: newBasket._id});
-            res.status(201).json({message: 'User Created', user});
+            //res.status(201).json({message: 'User Created', user});
+            res.redirect('/log-user');
             
         } catch (error) {
             if(error.code === 11000){

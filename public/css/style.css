@@ -330,3 +330,55 @@ img{
   justify-content: space-between;
   padding: 10px 0;
 }
+
+
+/* Admin Carts List */
+
+.admin-carts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.baskets-ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.baskets-ul li {
+  border: 1px solid var(--gray-light);
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.user__name {
+  font-weight: bold;
+  font-size: var(--font-size-md);
+}
+
+.order__status {
+  float: right;
+  font-style: italic;
+  font-size: var(--font-size-base);
+  color: var(--gray);
+}
+
+.basket__contents {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.basket__contents span {
+  width: 50%;
+  margin-bottom: 5px;
+}
+
+.basket__item span {
+  display: inline-block;
+}
+
+.basket__quantity span {
+  display: inline-block;
+}

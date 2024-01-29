@@ -1,5 +1,3 @@
-//alert("hello world");
-
 //searchBar functionality
 document.addEventListener('DOMContentLoaded', function(){
 

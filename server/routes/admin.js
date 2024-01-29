@@ -206,7 +206,8 @@ router.post('/register', async (req, res)=>{
         const hashedPassword = await bcrypt.hash(password, 10);
         try {
             const user = await User.create({ username, password: hashedPassword});
-            res.status(201).json({message: 'User Created', user});
+            //res.status(201).json({message: 'User Created', user});
+            res.redirect('/admin');
             
         } catch (error) {
             if(error.code === 11000){
@@ -230,7 +231,6 @@ router.get('/active-orders', authMiddleware, async (req, res)=>{
             description: "Simple internet shop made with NodeJS and Express."
         }
         const baskets = await Basket.find();
-
         const clients = await Client.find();
         const products = await Item.find();
 
@@ -241,7 +241,9 @@ router.get('/active-orders', authMiddleware, async (req, res)=>{
             const name = user.username;
             const ifOrdered = cart.ordered;
             contents = [];
+            ifEmpty = true;
             for(let item of cart.items){
+                ifEmpty = false;
                 const product = products.find( product => product._id.toString() === item.item.toString());
                 contents.push({
                     name: product.name,
@@ -249,11 +251,14 @@ router.get('/active-orders', authMiddleware, async (req, res)=>{
                     price: product.price
                 });
             }
-            data.push({
-                contents: contents,
-                name: name,
-                ifOrdered: ifOrdered
-            });
+            if(!ifEmpty){
+                data.push({
+                    contents: contents,
+                    name: name,
+                    ifOrdered: ifOrdered
+                });
+
+            }
         }
         res.render('admin/active-orders', {
             locals,
